@@ -2,7 +2,11 @@
 title: "emileygz_OriginalHomeworkCode_02"
 author: "Emiley Garcia-Zych"
 date: "2023-09-20"
-output: html_document
+output:
+  prettydoc:: html_pretty
+  theme: cayman
+  highlight: github
+  toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -59,19 +63,19 @@ print(probset)
 x <- 0:30
 l = 15
 probset <- dpois (x = x, lambda = l)
-barplot(probset, names.arg = x, space = 0, xlab = "number of calls per sitting", ylab = "relative frequency", main = "Probability Mass Function") 
+barplot(probset, names.arg = x, space = 0, col = "orange", xlab = "number of calls per sitting", ylab = "relative frequency", main = "Probability Mass Function") 
 ```
 
 ## Simulate 104 results from this distribution (i.e., 2 years of Saturday monitoring sessions).
 
 ```{r}
-rpois (104, 15)
-
+simulation <- rpois (104, 15)
+simulation
 ```
 
 ## Plot the simulated results using hist() and use xlim() to set the horizontal limits to be from 0 to 30. How does your histogram compare to the shape of the probability mass function you plotted above?
 
 ```{r}
-hist(rpois(104,15), breaks = c(0:30), probability = TRUE, main = "Number of Calls Per Sitting",
+hist(simulation, breaks = c(0:30), probability = TRUE, col = "pink", main = "Number of Calls Per Sitting",
     xlab = "number of calls", ylab = "relative frequency")
 ```
